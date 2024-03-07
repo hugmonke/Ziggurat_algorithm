@@ -5,33 +5,33 @@ import scipy.stats as st
 
 if __name__ == "__main__":
     n = 100000
-    wyn, alfa = zig.generate(n)
+    sol, alpha = zig.generate(n)
     b=0
-    if alfa == 1:
+    if alpha == 1:
         b = 2000
     else: 
         b = 200
     plt.title("Pareto Distribution - Ziggurat vs theoretical")
     plt.ylabel("Density function f(x)")
     plt.xlabel("x")
-    plt.hist(wyn, bins = b, density = True)
+    plt.hist(sol, bins = b, density = True)
     plt.xlim([1, 10])
 
     x = np.linspace(1, 10, 1000)
-    y = st.pareto.pdf(x, alfa)
+    y = st.pareto.pdf(x, alpha)
 
-    iks = np.linspace(1, 10, 1000)
-    igrek = st.pareto.cdf(x, alfa)
-    sumka = np.zeros(100000)
-    sumka = np.arange(len(wyn))/len(wyn)
+    XX = np.linspace(1, 10, 1000)
+    YY = st.pareto.cdf(x, alpha)
+    summ = np.zeros(n)
+    summ = np.arange(len(sol))/len(sol)
 
 
-    #If alfa = 1 st.pareto.mean(alfa) returns inf, if alfa > 1 st.pareto.mean(alfa) returns correct expected values
-    ex1 = np.mean(wyn)
-    ex2 = st.pareto.mean(alfa)
+    #If alpha = 1 st.pareto.mean(alpha) returns inf, if alpha > 1 st.pareto.mean(alpha) returns correct expected values
+    ex1 = np.mean(sol)
+    ex2 = st.pareto.mean(alpha)
 
-    var1 = np.var(wyn)
-    var2 = st.pareto.var(alfa)
+    var1 = np.var(sol)
+    var2 = st.pareto.var(alpha)
 
     print("Empirical expected value ", ex1, "\nTheoretical expected value ", ex2)
     print("empirical variance ", var1, "\ntheoretical variance: ", var2)
@@ -40,8 +40,8 @@ if __name__ == "__main__":
     plt.show()
 
     plt.title("Pareto Distribution - Ziggurat vs theoretical")
-    plt.plot(np.sort(wyn), sumka, label = "ECDF")
-    plt.plot(iks, igrek, label = "Theoretical CDF")
+    plt.plot(np.sort(sol), summ, label = "ECDF")
+    plt.plot(XX, YY, label = "Theoretical CDF")
     plt.legend()
     plt.ylabel("CDF")
     plt.xlabel("x")
