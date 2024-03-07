@@ -1,6 +1,6 @@
 ## Ziggurat Algorithm
 This simple code demonstrates how to generate random variables using Ziggurat Algorithm.
-In this specific case we generate $n=100,000$ random variables from Pareto distribution with shape parameter $\alpha > 1$.
+In this specific case we generate $n=100,000$ random variables from Pareto distribution with shape parameter $\alpha \ge 1$.
 
 The code is written as a learning task and should not be used for professional purposes as it may contain unknown errors and bugs.
 
